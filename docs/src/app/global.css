@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Kameron&family=Lekton&display=swap');
+
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin-bottom: 5%;
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    background-color: #2D2D2D !important;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 200px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    padding: 4%;
+}
+
+.progress-bar {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: white;
+    transform-origin: 0%;
+}
