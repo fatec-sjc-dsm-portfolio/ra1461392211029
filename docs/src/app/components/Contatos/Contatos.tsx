@@ -95,7 +95,7 @@ const Contatos: React.FC = () => {
                 <a href="https://www.linkedin.com/in/kevinrribeiro/" target="_blank"><AiFillLinkedin /></a>
                 <a href="https://www.instagram.com/kevinromrib/" target="_blank"><AiOutlineInstagram /></a>
                 <a href="https://github.com/KevinRomRib" target="_blank"><AiFillGithub /></a>
-                <a href="..." target="_blank"><FaBitbucket /></a>
+                {/* <a href="..." target="_blank"><FaBitbucket /></a> */}
             </Box>
           </Box>
         </motion.div>

@@ -4,77 +4,128 @@ import React from 'react';
 import styled from "styled-components";
 import Cards from "../Card/Card";
 import arrayProjetos from './projetos';
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import arrayProjetosPessoais from './projetos_pessoais';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-
-const Box = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 100px;
-  flex-wrap: wrap;
-`;
+// Importar os estilos do Swiper
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 100px;
+  justify-content: space-between;
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  width: 100%;
+  gap: 50px;
 
-  h1{
-    color: white;
-    font-weight: bold;
+  h1 {
     font-family: Lekton;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .swiper {
+    width: 100%;
+    padding: 10px 0 40px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet {
+    background: #00acee;
   }
 `;
 
 const Projetos: React.FC = () => {
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const animationVariants = {
-    hidden: { x: -300, opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-  };
-  
   return (
-    <>
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        exit="hidden"
-        variants={animationVariants}
-        transition={{
-          type: "spring",
-          stiffness: 80,
-          damping: 10,
+    <Container>
+      <h1>Projetos Academicos</h1>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        breakpoints={{
+          1800: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1200: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          700: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
         }}
       >
-        <Container>
-          <h1>Projetos</h1>
-          <Box>  
-            {arrayProjetos.map((item, index) => (
-              <Cards 
-                link={item.link} 
-                title={item.title} 
-                text={item.text} 
-                type='projeto'
-                tecnologias={item.tecnologias}
-                id={item.id}
-                summary={item.summary}
-                key={index}
-              />
-            ))}
-          </Box>
-        </Container>
-      </motion.div>
-    </>
+        {arrayProjetos.map((item, index) => (
+          <SwiperSlide key={index}>
+            <Cards 
+              link={item.link} 
+              title={item.title} 
+              text={item.text} 
+              type='projeto'
+              tecnologias={item.tecnologias}
+              id={item.id}
+              summary={item.summary}
+              subTitle={item.subTitle}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <h1>Projetos Pessoais</h1>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        breakpoints={{
+          1800: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1200: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          700: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+        }}
+      >
+        {arrayProjetosPessoais.map((item, index) => (
+          <SwiperSlide key={index}>
+            <Cards 
+              link={item.link} 
+              title={item.title} 
+              text={item.text} 
+              type='projeto'
+              tecnologias={item.tecnologias}
+              id={item.id}
+              summary={item.summary}
+              subTitle={item.subTitle}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Container>
   );
 };
 

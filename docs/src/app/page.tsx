@@ -23,8 +23,10 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.body.style.backgroundColor = "#1a1a1a";
     setTimeout(() => {
       setLoading(false);
+      document.body.style.backgroundColor = "#2D2D2D";
     }, 1000);
   }, []);
 
@@ -38,17 +40,18 @@ const App = () => {
         <Spinner />
       ) : (
         <>
-          <motion.div
-            className="progress-bar"
-            style={{ scaleX: scrollYProgress }}
-          />
-          <Inicio />
-          <Sobre />
-          <Projetos />
-          <Qualificacoes />
-          <Experiencias />
-          <Contatos />
-          
+          <body>  
+            <motion.div
+              className="progress-bar"
+              style={{ scaleX: scrollYProgress }}
+            />
+            <Inicio />
+            <Sobre />
+            <Projetos />
+            <Qualificacoes />
+            <Experiencias />
+            <Contatos />
+          </body>
         </>
       )}
     </>

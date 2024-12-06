@@ -16,13 +16,11 @@ const Field = styled.div`
 
 const Link = styled.a`
   cursor: pointer;
+  font-weight: bold;
 `;
 
 const Container = styled.div`
   width: 500px;
-  @media(max-width: 1120px){
-    width: auto;
-  }
   @media(max-width: 490px){
     width: 450px;
   }
@@ -41,11 +39,12 @@ interface CardProps {
   type?: string;
   empName?: string;
   summary?: string;
+  subTitle?: string;
   tecnologias?: React.ReactNode;
   id?: number;
 }
 
-const Cards: React.FC<CardProps> = ({ link, text, title, type, tecnologias, empName, id, summary }) => {
+const Cards: React.FC<CardProps> = ({ link, text, title, type, tecnologias, empName, id, summary, subTitle }) => {
   const [showModal, setShowModal] = useState(false);
 
   const redirecionarParaSiteExterno = (link: any) => {
@@ -65,6 +64,7 @@ const Cards: React.FC<CardProps> = ({ link, text, title, type, tecnologias, empN
     <Container>
       <Card
         style={{
+          zIndex: 1,
           background: '#2D2D2D',
           color: 'white',
           border: '1px solid white',
@@ -81,9 +81,9 @@ const Cards: React.FC<CardProps> = ({ link, text, title, type, tecnologias, empN
           >
           {type !== 'projeto' && <h4>{empName}</h4>}
           <Card.Title>{title}</Card.Title>
-          {text && (
+          {subTitle && (
             <Card.Text>
-              {text.split('\n').map((line, index) => (
+              {subTitle.split('\n').map((line, index) => (
                 <p key={index}>{line}</p>
               ))}
             </Card.Text>
@@ -98,12 +98,13 @@ const Cards: React.FC<CardProps> = ({ link, text, title, type, tecnologias, empN
               justifyContent: 'center',
               alignItems: 'center',
               gap: '10px',
+              fontWeight: '500',
             }}
           >
             {type === 'projeto' ? (
               <>
                 <AiFillGithub />
-                "Repositório"
+                Repositório
               </>
             ) : (
               'Site da empresa'

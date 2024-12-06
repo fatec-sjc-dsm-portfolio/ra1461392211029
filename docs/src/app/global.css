@@ -15,12 +15,11 @@ html {
 
 body {
     width: 100%;
-    background-color: #2D2D2D !important;
+    background-color: #2D2D2D;
     display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    flex-direction: column;
     gap: 200px;
+    justify-content: center;
+    flex-direction: column;
 }
 
 main {
@@ -32,7 +31,7 @@ main {
 }
 
 .progress-bar {
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     bottom: 0;
     left: 0;
