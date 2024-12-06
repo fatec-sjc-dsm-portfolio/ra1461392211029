@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Faz checkout do repositório
+      - uses: actions/checkout@v4
+
+      # Entra na pasta "docs", instala dependências e executa a aplicação
+      - name: Setup and run application
+        run: |
+          cd docs
+          npm install
+          npm run dev
